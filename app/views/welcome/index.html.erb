@@ -1,0 +1,26 @@
+<h1>WELCOME!</h1>
+<div class="row row-wrap">
+  <ul class="tips">
+    <% @tips.each do |t| %>
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <li>
+        <% @users.each do |f| %>			
+          <% if f.id == t.id %>
+            <h3><%= link_to t.title, user_tip_path(f.id, t.id) %></h3>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                By: <%= link_to f.first_name, user_path(f.id) %>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <%= image_tag f.avatar.url(:thumb), class: "homepage-avatar" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <p><%= t.content %></p>
+        </li>
+      </div>
+    <% end %>
+  </ul>
+
+

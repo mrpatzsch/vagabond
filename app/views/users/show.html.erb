@@ -1,0 +1,18 @@
+<h1>Hello <%= @user.first_name %></h1><%= image_tag @user.avatar.url(:thumb) %></h1>
+<% if current_user %>
+<% if current_user.id == @user.id %>
+	<p><%= link_to "New Tip", new_user_tip_path(@user.id) %></p>
+<% end %>
+<% end %>
+<ol>
+<% @tips.each do |t| %>
+  <li>
+    Title: <%= t.title %><br>
+    Content: <%= t.content %>
+    <% if current_user == @user.id %>
+    <%= link_to "Edit", edit_user_tip_path(current_user.id, t.id) %>
+    <%= link_to "Delete", destroy_tip_path(current_user.id, t.id), method: :delete %>
+    <% end %>
+  </li>
+<% end %>
+</ol>

@@ -1,0 +1,11 @@
+<h1>Update your profile</h1>
+
+<%= form_for @user, :html => { :multipart => true } do |f| %>
+  <%= f.text_field :first_name, class: "form-control" %>
+  <%= f.text_field :last_name, class: "form-control" %>
+  <%= f.email_field :email, class: "form-control" %>
+  <%= f.file_field :avatar, class: "form-control" %>
+  <%= f.hidden_field :password, class: "form-control" %>
+  <%= f.hidden_field :password_confirmation, class: "form_control" %>
+  <%= f.submit "Save Changes" %>
+<% end %>
